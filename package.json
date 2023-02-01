@@ -1,0 +1,22 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/Aleksandr2302/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/Aleksandr2302/frontend-project-44/actions)",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "module",
+    "url": "git+https://github.com/Aleksandr2302/frontend-project-44.git"
+  },
+  "author": "Aleksandr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aleksandr2302/frontend-project-44/issues"
+  },
+  "bin": {
+  "brain-games": "bin/brain-games.js"
+},
+  "homepage": "https://github.com/Aleksandr2302/frontend-project-44#readme"
+}
