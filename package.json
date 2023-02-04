@@ -6,7 +6,6 @@
   "scripts": {
     "test": "test"
   },
-
   "type": "module",
   "repository": {
     "url": "git+https://github.com/Aleksandr2302/frontend-project-44.git"
@@ -22,5 +21,10 @@
   "homepage": "https://github.com/Aleksandr2302/frontend-project-44#readme",
   "dependencies": {
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
   }
 }
