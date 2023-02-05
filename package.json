@@ -16,7 +16,8 @@
     "url": "https://github.com/Aleksandr2302/frontend-project-44/issues"
   },
   "bin": {
-    "brain-games": "bin/brain-games.js"
+    "brain-games": "bin/brain-games.js",
+    "brain-even": "bin/brain-even.js"
   },
   "homepage": "https://github.com/Aleksandr2302/frontend-project-44#readme",
   "dependencies": {
