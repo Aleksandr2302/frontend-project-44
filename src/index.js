@@ -7,6 +7,7 @@ let firstRandomNumber;
 let secondRandomNumber;
 let resultOfCorrectAnswer;
 let isGameOver;
+let hideOfProgressionNumber;
 
 // Функция приветствия
 const greetings = () => {
@@ -34,6 +35,10 @@ const rulesOfGame = (nameGame) => {
       console.log("Find the greatest common divisor of given numbers.");
       break;
 
+    case "brain-progression":
+      console.log("What number is missing in the progression?");
+      break;
+
     default:
       console.log("Sorry, something wrong");
       break;
@@ -54,13 +59,30 @@ const getRandomMathSign = () => {
   return operator;
 };
 
-// Функция  задание -вопрос юзеру
+// Функция, задающая вопрос юзеру
 
 const question = (nameGame) => {
   firstRandomNumber = getRandom(1, 100);
   secondRandomNumber = getRandom(1, 100);
   sign = getRandomMathSign();
   let questionResult;
+  const stepForProgression = getRandom(2, 10);
+  const hideOfIndexNumber = getRandom(1, 10);
+
+  const progression = (firstRandomNumber, stepForProgression) => {
+    let arr = [];
+    const endProgression = firstRandomNumber + stepForProgression * 10;
+    for (
+      let i = firstRandomNumber;
+      i < endProgression;
+      i += stepForProgression
+    ) {
+      arr.push(i);
+    }
+    hideOfProgressionNumber = arr.splice(hideOfIndexNumber, 1, "..");
+    arr = arr.join(" ");
+    return arr;
+  };
 
   switch (nameGame) {
     case "brain-calc":
@@ -75,6 +97,12 @@ const question = (nameGame) => {
     case "brain-gcd":
       questionResult = console.log(
         `${"Question:"} ${firstRandomNumber} ${secondRandomNumber}`
+      );
+      break;
+
+    case "brain-progression":
+      questionResult = console.log(
+        `${"Question:"} ${progression(firstRandomNumber, stepForProgression)}`
       );
       break;
 
@@ -117,6 +145,11 @@ const correctAnswer = (nameGame) => {
       resultOfCorrectAnswer = GCD(firstRandomNumber, secondRandomNumber);
       break;
     }
+
+    case "brain-progression":
+      resultOfCorrectAnswer = hideOfProgressionNumber;
+      break;
+
     default:
       console.log("Sorry, something wrong");
       break;
