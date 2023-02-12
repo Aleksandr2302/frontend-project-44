@@ -30,6 +30,10 @@ const rulesOfGame = (nameGame) => {
       console.log('Answer "yes" if the number is even, otherwise answer "no".');
       break;
 
+    case "brain-gcd":
+      console.log("Find the greatest common divisor of given numbers.");
+      break;
+
     default:
       console.log("Sorry, something wrong");
       break;
@@ -53,8 +57,8 @@ const getRandomMathSign = () => {
 // Функция  задание -вопрос юзеру
 
 const question = (nameGame) => {
-  firstRandomNumber = getRandom(1, 10);
-  secondRandomNumber = getRandom(1, 10);
+  firstRandomNumber = getRandom(1, 100);
+  secondRandomNumber = getRandom(1, 100);
   sign = getRandomMathSign();
   let questionResult;
 
@@ -67,6 +71,13 @@ const question = (nameGame) => {
     case "brain-even":
       questionResult = console.log(`${"Question:"} ${firstRandomNumber}`);
       break;
+
+    case "brain-gcd":
+      questionResult = console.log(
+        `${"Question:"} ${firstRandomNumber} ${secondRandomNumber}`
+      );
+      break;
+
     default:
       console.log("Sorry, something wrong");
       break;
@@ -96,6 +107,16 @@ const correctAnswer = (nameGame) => {
         resultOfCorrectAnswer = "no";
       }
       break;
+    case "brain-gcd": {
+      const GCD = (firstRandomNumber, secondRandomNumber) => {
+        if (!secondRandomNumber) {
+          return firstRandomNumber;
+        }
+        return GCD(secondRandomNumber, firstRandomNumber % secondRandomNumber);
+      };
+      resultOfCorrectAnswer = GCD(firstRandomNumber, secondRandomNumber);
+      break;
+    }
     default:
       console.log("Sorry, something wrong");
       break;
@@ -141,4 +162,4 @@ const runGameWithCounter = (nameGame) => {
   }
 };
 
-export { runGameWithCounter };
+export default runGameWithCounter;
