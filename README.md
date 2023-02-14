@@ -17,9 +17,11 @@ https://asciinema.org/a/TVfPZGirU2Zvuvs4wmTBvlT4v
 ######brain-gcd:
 необходимо определить наибольший общий делитель между двумя числами
 https://asciinema.org/a/2kQALB2tPoLZEm8wdPzrPqMn5
+
 ######brain-progression:
 необходимо добавить недостающее число в арифметическую прогрессию
 https://asciinema.org/a/CoHOJtaA8XeSZpzfSG8KfWHrh
+
 ######brain-prime:
 необходимо определить является ли число простым
 https://asciinema.org/a/bvDtx6Q6mHJl7lGplx2aMJrq9
