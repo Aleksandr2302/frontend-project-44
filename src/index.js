@@ -9,7 +9,7 @@ let resultOfCorrectAnswer;
 let isGameOver;
 let hideOfProgressionNumber;
 
-// Функция приветствия
+// Функция приветствия юзера
 const greetings = () => {
   userName = readlineSync.question(
     "Welcome to the Brain Games! \nMay I have your name? "
@@ -39,6 +39,12 @@ const rulesOfGame = (nameGame) => {
       console.log("What number is missing in the progression?");
       break;
 
+    case "brain-prime":
+      console.log(
+        'Answer "yes" if given number is prime. Otherwise answer "no".'
+      );
+      break;
+
     default:
       console.log("Sorry, something wrong");
       break;
@@ -62,13 +68,14 @@ const getRandomMathSign = () => {
 // Функция, задающая вопрос юзеру
 
 const question = (nameGame) => {
-  firstRandomNumber = getRandom(1, 100);
+  firstRandomNumber = getRandom(2, 100);
   secondRandomNumber = getRandom(1, 100);
   sign = getRandomMathSign();
   let questionResult;
   const stepForProgression = getRandom(2, 10);
   const hideOfIndexNumber = getRandom(1, 10);
 
+  // Доп функция для вывода вопроса в игре brain-progression
   const progression = (firstRandomNumber, stepForProgression) => {
     let arr = [];
     const endProgression = firstRandomNumber + stepForProgression * 10;
@@ -84,6 +91,7 @@ const question = (nameGame) => {
     return arr;
   };
 
+  // Сценарии вывода вопроса юзеру в зависимости от названия игры
   switch (nameGame) {
     case "brain-calc":
       questionResult = console.log(
@@ -106,6 +114,10 @@ const question = (nameGame) => {
       );
       break;
 
+    case "brain-prime":
+      console.log(`${"Question:"} ${firstRandomNumber}`);
+      break;
+
     default:
       console.log("Sorry, something wrong");
       break;
@@ -116,7 +128,7 @@ const question = (nameGame) => {
 // Функция получения ответа от пользователя
 const getUsersAnswer = () => readlineSync.question("Your answer: ");
 
-// Функция определения правильного ответа
+// Функция определения правильного ответа в зависимости от названия игры
 const correctAnswer = (nameGame) => {
   switch (nameGame) {
     case "brain-calc":
@@ -150,6 +162,23 @@ const correctAnswer = (nameGame) => {
       resultOfCorrectAnswer = hideOfProgressionNumber;
       break;
 
+    case "brain-prime":
+      {
+        const primeFucnction = (firstRandomNumber) => {
+          if (firstRandomNumber > 1) {
+            for (let i = 2; i < firstRandomNumber; i += 1) {
+              if (firstRandomNumber % i === 0) {
+                return "no";
+              }
+            }
+          }
+          return "yes";
+        };
+
+        resultOfCorrectAnswer = primeFucnction(firstRandomNumber);
+      }
+      break;
+
     default:
       console.log("Sorry, something wrong");
       break;
@@ -157,7 +186,7 @@ const correctAnswer = (nameGame) => {
   return resultOfCorrectAnswer;
 };
 
-// Функция с текстом правильного ответа
+// Функция с выводом текста правильного ответа
 const textOfcorrectAnswer = () => {
   console.log("Correct!");
 };
@@ -176,7 +205,7 @@ const compareOfAnswer = (nameGame) => {
   }
 };
 
-// Функция запуска игры со счетчиком
+// Функция запуска игры со счетчиком (параметр название игры)
 const runGameWithCounter = (nameGame) => {
   greetings();
   rulesOfGame(nameGame);
