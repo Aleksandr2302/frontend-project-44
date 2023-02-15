@@ -1,4 +1,4 @@
-import * as readlineSync from "readline-sync";
+import * as readlineSync from 'readline-sync';
 
 // Объявление глобальных переменных
 let userName;
@@ -12,9 +12,9 @@ let hideOfProgressionNumber;
 // Функция приветствия юзера
 const greetings = () => {
   userName = readlineSync.question(
-    "Welcome to the Brain Games! \nMay I have your name? "
+    'Welcome to the Brain Games! \nMay I have your name? '
   );
-  console.log(`${"Hello,"} ${userName}${"!"}`);
+  console.log(`${'Hello,'} ${userName}${'!'}`);
 };
 
 // Функкция определения имени юзера
@@ -23,43 +23,43 @@ const getUsersName = () => userName;
 // Функция описания правил игры
 const rulesOfGame = (nameGame) => {
   switch (nameGame) {
-    case "brain-calc":
-      console.log("What is the result of the expression?");
+    case 'brain-calc':
+      console.log('What is the result of the expression?');
       break;
 
-    case "brain-even":
+    case 'brain-even':
       console.log('Answer "yes" if the number is even, otherwise answer "no".');
       break;
 
-    case "brain-gcd":
-      console.log("Find the greatest common divisor of given numbers.");
+    case 'brain-gcd':
+      console.log('Find the greatest common divisor of given numbers.');
       break;
 
-    case "brain-progression":
-      console.log("What number is missing in the progression?");
+    case 'brain-progression':
+      console.log('What number is missing in the progression?');
       break;
 
-    case "brain-prime":
+    case 'brain-prime':
       console.log(
         'Answer "yes" if given number is prime. Otherwise answer "no".'
       );
       break;
 
     default:
-      console.log("Sorry, something wrong");
+      console.log('Sorry, something wrong');
       break;
   }
 };
 
 // Функция вывода рандомного числа
 function getRandom(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
+  const minCopy = Object.assign(Math.ceil(min));
+  const maxCopy = Object.assign(Math.floor(max));
+  return Math.floor(Math.random() * (maxCopy - minCopy)) + minCopy;
 }
 // Функция вывода рандомного математического знака
 const getRandomMathSign = () => {
-  const arr = ["+", "-", "*"];
+  const arr = ['+', '-', '*'];
   const i = Math.floor(Math.random() * arr.length);
   const operator = arr[i];
   return operator;
@@ -86,68 +86,68 @@ const question = (nameGame) => {
     ) {
       arr.push(i);
     }
-    hideOfProgressionNumber = arr.splice(hideOfIndexNumber, 1, "..");
-    arr = arr.join(" ");
+    hideOfProgressionNumber = arr.splice(hideOfIndexNumber, 1, '..');
+    arr = arr.join(' ');
     return arr;
   };
 
   // Сценарии вывода вопроса юзеру в зависимости от названия игры
   switch (nameGame) {
-    case "brain-calc":
+    case 'brain-calc':
       questionResult = console.log(
-        `${"Question:"} ${firstRandomNumber} ${sign} ${secondRandomNumber}`
+        `${'Question:'} ${firstRandomNumber} ${sign} ${secondRandomNumber}`
       );
       break;
-    case "brain-even":
-      questionResult = console.log(`${"Question:"} ${firstRandomNumber}`);
+    case 'brain-even':
+      questionResult = console.log(`${'Question:'} ${firstRandomNumber}`);
       break;
 
-    case "brain-gcd":
+    case 'brain-gcd':
       questionResult = console.log(
-        `${"Question:"} ${firstRandomNumber} ${secondRandomNumber}`
-      );
-      break;
-
-    case "brain-progression":
-      questionResult = console.log(
-        `${"Question:"} ${progression(firstRandomNumber, stepForProgression)}`
+        `${'Question:'} ${firstRandomNumber} ${secondRandomNumber}`
       );
       break;
 
-    case "brain-prime":
-      console.log(`${"Question:"} ${firstRandomNumber}`);
+    case 'brain-progression':
+      questionResult = console.log(
+        `${'Question:'} ${progression(firstRandomNumber, stepForProgression)}`
+      );
+      break;
+
+    case 'brain-prime':
+      console.log(`${'Question:'} ${firstRandomNumber}`);
       break;
 
     default:
-      console.log("Sorry, something wrong");
+      console.log('Sorry, something wrong');
       break;
   }
   return questionResult;
 };
 
 // Функция получения ответа от пользователя
-const getUsersAnswer = () => readlineSync.question("Your answer: ");
+const getUsersAnswer = () => readlineSync.question('Your answer: ');
 
 // Функция определения правильного ответа в зависимости от названия игры
 const correctAnswer = (nameGame) => {
   switch (nameGame) {
-    case "brain-calc":
-      if (sign === "+") {
+    case 'brain-calc':
+      if (sign === '+') {
         resultOfCorrectAnswer = firstRandomNumber + secondRandomNumber;
-      } else if (sign === "-") {
+      } else if (sign === '-') {
         resultOfCorrectAnswer = firstRandomNumber - secondRandomNumber;
       } else {
         resultOfCorrectAnswer = firstRandomNumber * secondRandomNumber;
       }
       break;
-    case "brain-even":
+    case 'brain-even':
       if (firstRandomNumber % 2 === 0) {
-        resultOfCorrectAnswer = "yes";
+        resultOfCorrectAnswer = 'yes';
       } else if (firstRandomNumber % 2 !== 0) {
-        resultOfCorrectAnswer = "no";
+        resultOfCorrectAnswer = 'no';
       }
       break;
-    case "brain-gcd": {
+    case 'brain-gcd': {
       const GCD = (firstRandomNumber, secondRandomNumber) => {
         if (!secondRandomNumber) {
           return firstRandomNumber;
@@ -158,21 +158,21 @@ const correctAnswer = (nameGame) => {
       break;
     }
 
-    case "brain-progression":
+    case 'brain-progression':
       resultOfCorrectAnswer = hideOfProgressionNumber;
       break;
 
-    case "brain-prime":
+    case 'brain-prime':
       {
         const primeFucnction = (firstRandomNumber) => {
           if (firstRandomNumber > 1) {
             for (let i = 2; i < firstRandomNumber; i += 1) {
               if (firstRandomNumber % i === 0) {
-                return "no";
+                return 'no';
               }
             }
           }
-          return "yes";
+          return 'yes';
         };
 
         resultOfCorrectAnswer = primeFucnction(firstRandomNumber);
@@ -180,7 +180,7 @@ const correctAnswer = (nameGame) => {
       break;
 
     default:
-      console.log("Sorry, something wrong");
+      console.log('Sorry, something wrong');
       break;
   }
   return resultOfCorrectAnswer;
@@ -188,7 +188,7 @@ const correctAnswer = (nameGame) => {
 
 // Функция с выводом текста правильного ответа
 const textOfcorrectAnswer = () => {
-  console.log("Correct!");
+  console.log('Correct!');
 };
 
 // Функция сравнения правильного результата с результатом юзера
@@ -199,9 +199,9 @@ const compareOfAnswer = (nameGame) => {
     textOfcorrectAnswer();
   } else {
     console.log(
-      `${userAnswer} ${"is wrong answer ;(. Correct answer was"} ${answer}.\n${"Let's try again,"} ${getUsersName()}!`
+      `${userAnswer} ${'is wrong answer ;(. Correct answer was'} ${answer}.\n${"Let's try again,"} ${getUsersName()}!`
     );
-    isGameOver = "true";
+    isGameOver = 'true';
   }
 };
 
@@ -211,14 +211,14 @@ const runGameWithCounter = (nameGame) => {
   rulesOfGame(nameGame);
   const count = 3;
   let i = 0;
-  while (i < count && isGameOver !== "true") {
+  while (i < count && isGameOver !== 'true') {
     question(nameGame);
     correctAnswer(nameGame);
     compareOfAnswer(nameGame);
     i += 1;
   }
-  if (i === 3 && isGameOver !== "true") {
-    console.log(`${"Congratulations,"} ${getUsersName()}!`);
+  if (i === 3 && isGameOver !== 'true') {
+    console.log(`${'Congratulations,'} ${getUsersName()}!`);
   } else {
     return;
   }
