@@ -76,7 +76,7 @@ const question = (nameGame) => {
   const hideOfIndexNumber = getRandom(1, 10);
 
   // Доп функция для вывода вопроса в игре brain-progression
-  const progression = (firstRandomNumber, stepForProgression) => {
+  const progression = () => {
     let arr = [];
     const endProgression = firstRandomNumber + stepForProgression * 10;
     for (
@@ -147,16 +147,17 @@ const correctAnswer = (nameGame) => {
         resultOfCorrectAnswer = 'no';
       }
       break;
-    case 'brain-gcd': {
-      const GCD = (firstRandomNumber, secondRandomNumber) => {
-        if (!secondRandomNumber) {
-          return firstRandomNumber;
-        }
-        return GCD(secondRandomNumber, firstRandomNumber % secondRandomNumber);
-      };
-      resultOfCorrectAnswer = GCD(firstRandomNumber, secondRandomNumber);
+    case 'brain-gcd':
+      {
+        const gcd = (a, b) => {
+          if (!b) {
+            return a;
+          }
+          return gcd(b, a % b);
+        };
+        resultOfCorrectAnswer = gcd(firstRandomNumber, secondRandomNumber);
+      }
       break;
-    }
 
     case 'brain-progression':
       resultOfCorrectAnswer = hideOfProgressionNumber;
@@ -164,7 +165,7 @@ const correctAnswer = (nameGame) => {
 
     case 'brain-prime':
       {
-        const primeFucnction = (firstRandomNumber) => {
+        const primeFucnction = () => {
           if (firstRandomNumber > 1) {
             for (let i = 2; i < firstRandomNumber; i += 1) {
               if (firstRandomNumber % i === 0) {
