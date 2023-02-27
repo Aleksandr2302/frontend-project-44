@@ -144,11 +144,9 @@ const brainGcdCorrectAnswer = (a, b) => {
 
 // Функция расчета правильно ответа для игры brain-prime
 const brainPrimeCorrectAnswer = (a) => {
-  if (a > 1) {
-    for (let i = 2; i < a; i += 1) {
-      if (a % i === 0) {
-        return 'no';
-      }
+  for (let i = 2; i < a; i += 1) {
+    if (a % i === 0) {
+      return 'no';
     }
   }
   return 'yes';
