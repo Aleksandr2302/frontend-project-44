@@ -11,9 +11,7 @@ let hideOfProgressionNumber;
 let stepForProgression;
 // Функция приветствия юзера
 const greetings = () => {
-  userName = readlineSync.question(
-    'Welcome to the Brain Games! \nMay I have your name? '
-  );
+  userName = readlineSync.question('Welcome to the Brain Games! \nMay I have your name? ');
   console.log(`${'Hello,'} ${userName}${'!'}`);
 };
 
@@ -36,9 +34,7 @@ const rulesOfGame = (nameGame) => {
       console.log('What number is missing in the progression?');
       break;
     case 'brain-prime':
-      console.log(
-        'Answer "yes" if given number is prime. Otherwise answer "no".'
-      );
+      console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
       break;
     default:
       console.log('Sorry, something wrong');
@@ -48,8 +44,8 @@ const rulesOfGame = (nameGame) => {
 
 // Функция вывода рандомного числа
 function getRandom(min, max) {
-  const minCopy = Object.assign(Math.ceil(min));
-  const maxCopy = Object.assign(Math.floor(max));
+  const minCopy = Math.ceil(min);
+  const maxCopy = Math.floor(max);
   return Math.floor(Math.random() * (maxCopy - minCopy)) + minCopy;
 }
 // Функция вывода рандомного математического знака
@@ -174,7 +170,7 @@ const correctAnswer = (nameGame) => {
       console.log('Sorry, something wrong');
       break;
   }
-  return resultOfCorrectAnswer;
+  return resultOfCorrectAnswer.toString();
 };
 
 // Функция с выводом текста правильного ответа
@@ -186,12 +182,10 @@ const textOfcorrectAnswer = () => {
 const compareOfAnswer = (nameGame) => {
   const userAnswer = getUsersAnswer();
   const answer = correctAnswer(nameGame);
-  if (answer == userAnswer) {
+  if (answer === userAnswer) {
     textOfcorrectAnswer();
   } else {
-    console.log(
-      `${userAnswer} ${'is wrong answer ;(. Correct answer was'} ${answer}.\n${"Let's try again,"} ${getUsersName()}!`
-    );
+    console.log(`${userAnswer} ${'is wrong answer ;(. Correct answer was'} ${answer}.\n${"Let's try again,"} ${getUsersName()}!`);
     isGameOver = 'true';
   }
 };
@@ -210,8 +204,6 @@ const runGameWithCounter = (nameGame) => {
   }
   if (i === 3 && isGameOver !== 'true') {
     console.log(`${'Congratulations,'} ${getUsersName()}!`);
-  } else {
-    return;
   }
 };
 export default runGameWithCounter;
