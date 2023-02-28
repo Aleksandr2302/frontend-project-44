@@ -214,5 +214,4 @@ const runGameWithCounter = (nameGame) => {
     return;
   }
 };
-
 export default runGameWithCounter;
